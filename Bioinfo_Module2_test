@@ -9,3 +9,29 @@ read -p "Please enter your name: " peace
 echo "Hello, $peace! Nice to meet you."
 chmod +x greeter.sh
 ./greeter.sh
+
+
+#Answer to the last number
+#!/bin/bash
+# extract_features.sh
+# A script to extract 'gene' and 'exon' features from a GFF file
+curl 'https://raw.githubusercontent.com/bioinfoUI/bioinfoui-test-data/refs/heads/main/sample_data.gff' > sample_data.gff
+
+nano lastnumber.txt
+#paste script into lastnumber.txt
+
+# Extract lines where the 3rd column is exactly "gene"
+awk '$3 == "gene"' "sample_data.gff" > genes.gff
+
+# Extract lines where the 3rd column is exactly "exon"
+awk '$3 == "exon"' "sample_data.gff" > exons.gff
+
+echo "Extraction complete!"
+echo "-> genes.gff created"
+echo "-> exons.gff created"
+
+chmod +x lastnumber.txt
+./lastnumber.txt sample_data.gff
+
+
+
